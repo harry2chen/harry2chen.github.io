@@ -1,56 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8">
-	<title>Git 学习summary — My Awesome Site</title>
-	<meta name="description" content="Title: Git 学习summary; Date: 2016-12-04; Author: Harry Chen">
-	<meta name="author" content="Harry Chen">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-	<!--[if lt IE 9]>
-		<script src="/theme/html5.js"></script>
-		<![endif]-->
-	<link href="/theme/css/ipython.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
-	<link href="/theme/css/local.css" rel="stylesheet">
-	<link href="/theme/css/pygments.css" rel="stylesheet">
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://harry2chen.github.io/theme/css/style.less">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="icon" type="image/vnd.microsoft.icon" href="http://harry2chen.github.io/">
+  <link rel="stylesheet" type="text/css" href="http://harry2chen.github.io/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://harry2chen.github.io/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" type="text/css" href="http://harry2chen.github.io/theme/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="http://harry2chen.github.io/theme/css/hatena-bookmark-icon.css">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Harry Chen">
+  <meta name="description" content="Posts and writings by Harry Chen">
+
+
+<meta name="keywords" content="git, 中文">
+
+  <title>
+    Duang一下
+&ndash; Git 学习summary  </title>
+
 </head>
+
 <body>
-<div class="container">
-	<div class="page-header">
-		<h1><a href="/">My Awesome Site</a>
-			<br>	</div>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="text-center article-header">
-		<h1 itemprop="name headline" class="article-title">Git 学习summary</h1>
-		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
-			<h4 itemprop="name">Harry Chen</h4>
-		</span>
-		<time datetime="2016-12-04T22:06:00+08:00" itemprop="datePublished">日 04 十二月 2016</time>
-	</div>
-	<div>
-		Category:
-		<span itemprop="articleSection">
-			<a href="/category/tech.html" rel="category">Tech</a>
-		</span>
-	</div>
- 
-	<div>
-		Tags:
-		<span itemprop="keywords">
-			<a href="/tag/git.html" rel="tag">git</a>
-		</span>
-		<span itemprop="keywords">
-			<a href="/tag/zhong-wen.html" rel="tag">中文</a>
-		</span>
-	</div>
-	<div itemprop="articleBody" class="article-body"><h1>Git 学习summary</h1>
+  <main>
+    <header>
+      <div class="site_name">
+        <a href="http://harry2chen.github.io">Duang一下</a>
+      </div>
+      <p>
+        <a href="http://harry2chen.github.io/archives.html"><i class="fa fa-archive"></i> Arcive</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="http://harry2chen.github.io/my-super-post.html">Git 学习summary</a></h1>
+  </div>
+  <div class="article_meta">
+    <p class="article_meta_post_date">Posted on: 日 04 十二月 2016</p>
+ Tags:
+      <a href="http://harry2chen.github.io/tag/git.html">#git</a>,      <a href="http://harry2chen.github.io/tag/zhong-wen.html">#中文</a>    </p>
+  </div>
+  <div class="article_text">
+    <h1>Git 学习summary</h1>
 <h3>添加文件放入repo</h3>
 <div class="highlight"><pre><span></span>$ git add readme.txt            // 加入到暂存区<span class="p">;</span>
+$ git add -A                // stags All,both <span class="o">[</span>git add . <span class="o">&amp;&amp;</span> git add -u<span class="o">]</span>
+$ git add .                 // stags new and modified, **without deleted**
+$ git add -u                // stags modified and deleted, without new
 $ git commit -m <span class="s2">&quot;write a readme file&quot;</span>       //提交到版本库
 </pre></div>
 
@@ -263,74 +266,53 @@ $ git unstage test.py   // 实际上执行：$ git reset HEAD test.py
 <h3>other</h3>
 <div class="highlight"><pre><span></span>* 忽略某些文件，在Git工作区的根目录下创建 .gitignore文件
 * git配置文件放在.git/config 文件中
-</pre></div></div>
-	<hr>
-	<h2>Comments</h2>
-</div>
-		</div>
-	</div> 	<!-- <hr> -->
-</div> <!-- /container -->
-<footer class="aw-footer bg-danger">
-	<div class="container"> <!-- footer -->
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="row">
-					<div class="col-md-3">
-						<h4>Navigation</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="">My Awesome Site</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Author</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="#">You can add links in your config file</a></li>
-							<li><a href="#">Another social link</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Categories</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="/category/tech.html">Tech (2)</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h4>Links</h4>
-						<ul class="list-unstyled my-list-style">
-							<li><a href="http://getpelican.com/">Pelican</a></li>
-							<li><a href="http://python.org/">Python.org</a></li>
-							<li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-							<li><a href="#">You can modify those links in your config file</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</footer>
-<div class="container">
-	<div class="row">
-		<div class="col-md-12 text-center center-block aw-bottom">
-			<p>&copy; Harry Chen 2016</p>
-			<p>Powered by Pelican</p>
-		</div>
-	</div>
-</div>
-<!-- JavaScript -->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$("div.collapseheader").click(function () {
-		$header = $(this).children("span").first();
-		$codearea = $(this).children(".input_area");
-		$codearea.slideToggle(500, function () {
-			$header.text(function () {
-				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
-			});
-		});
-	});
-});
-</script>
+</pre></div>
+  </div>
+  <div id="article_comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_identifier = "my-super-post.html";
+        (function() {
+             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+             dsq.src = '//harry2chen.disqus.com/embed.js';
+             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+         })();
+    </script>
+  </div>
+
+</article>
+
+
+  </main>
+    <footer>
+      <div class="author_logo">
+          <img src="http://harry2chen.github.io/theme/images/logo.png" alt="logo">
+      </div>
+      <section class="user_meta">
+        <div class="author_name">
+          <a href="http://harry2chen.github.io/pages/about.html">Harry Chen</a>
+          <p></p>
+        </div>
+        <div class="author_link">
+          <ul>
+            <li><a href="http://getpelican.com/" title="Pelican"><i class="fa fa-link"></i></a></li>
+            <li><a href="http://python.org/" title="Python.org"><i class="fa fa-link"></i></a></li>
+            <li><a href="http://jinja.pocoo.org/" title="Jinja2"><i class="fa fa-link"></i></a></li>
+            <li><a href="#" title="You can modify those links in your config file"><i class="fa fa-link"></i></a></li>
+            <li>
+              <a href="#" target="_blank" title="You can add links in your config file">
+              </a>
+            </li>
+            <li>
+              <a href="#" target="_blank" title="Another social link">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <div class="ending_message">
+        <p>&copy; Harry Chen. Powered by <a href="http://getpelican.com" target="_blank">Pelican</a>, Theme is using <a href="https://github.com/laughk/pelican-hss" target="_blank">HSS</a>. </p>
+      </div>
+    </footer>
 </body>
 </html>
