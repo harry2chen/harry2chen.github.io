@@ -3,9 +3,10 @@
 @light-grey:  #eeeeee;
 @med-grey:  #999999;
 @dark-grey:  #4d4d4d;
+@dark-red: 	#8B0000;
 @sans: Verdana, "游ゴシック", YuGothic, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
 @serif: "Times New Roman", "游明朝", YuMincho, "Hiragino Mincho ProN", Meiryo, serif;
-@mono: 'Source Code Pro', monospace;
+@mono: 'Roboto Mono', monospace;
 
 body {
   margin: 0;
@@ -13,12 +14,12 @@ body {
   background-color: @white;
   color: @dark-grey;
   font-family: @sans;
-  font-size: 17px;
+  font-size: 14px;
 }
 
 header {
-  .site_name {
-    font-size: 28px;
+  .site-name {
+    font-size: 30px;
     font-weight: bold;
   }
 }
@@ -56,14 +57,21 @@ img {
 }
 
 iframe {
-  .twitter-tweet, .slide_image{
+  .slide_image{
     display: block;
     margin-left: auto;
     margin-right: auto;
   }
 }
 
-.article_text > iframe {
+/* for embed tweet */
+twitterwidget {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.article__text > iframe {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -80,7 +88,7 @@ iframe {
     li {
       display: inline;
       float: left;
-      .active {
+      .pagination__page--current {
         background-color: #212121;
         color: @white;
       }
@@ -92,28 +100,29 @@ iframe {
         padding: 8px 16px;
         text-decoration: none;
         border-radius: 5px;
+      }
 
+      .pagination__prev--none,
+      .pagination__next--none {
+        display: none;
       }
     }
   }
 }
 
-.social_tools {
-  margin-bottom: 1rem;
+.social-tools {
+  margin-bottom: 2rem;
+}
+
+.social-tools__title {
+  display: block;
+  font-size: 13px;
+  color: @med-grey;
   margin-top: 3rem;
 }
 
-.social_tools_title {
-  font-size: 18px;
-  font-style: italic;
-  margin: 5px 0;
-  display: block;
-  margin: 5px 0;
-  border-bottom: 0.5px @light-grey solid;
-}
-
-.social_buttons {
-  font-size: 25px;
+.social-tools__buttons {
+  font-size: 26px;
   a {
     color: @med-grey;
     margin: 0.4rem;
@@ -128,6 +137,10 @@ iframe {
   margin-bottom: 2em;
 }
 
+iframe.embedly-card {
+  box-shadow: 5px 2.5px 2.5px 2.5px rgba(0,0,0,.4);
+  border-radius: 5px;
+}
 
 @media screen and (min-width: 640px) {
   main {
@@ -142,11 +155,11 @@ iframe {
       margin-left: auto;
       margin-right: auto;
 
-      div.article_meta {
+      .article__meta {
         display: flex;
         p {
           margin-right: 1em;
-          div.article_meta_post_date {
+          .article__meta__post-date {
             width: 20em
           }
         }
@@ -159,11 +172,11 @@ iframe {
   }
 
   footer {
-    section.user_meta {
-      div.autohr_name {
+    section.author {
+      .autohr__name {
         margin-left: auto;
       }
-      div.author_link {
+      .author__link {
         margin-right: auto;
       }
     }
@@ -200,13 +213,13 @@ main {
   article {
     padding: 40px 20px;
 
-    div.article_title {
+    .article__title {
       h1 {
         margin-bottom: 8px;
       }
     }
 
-    div.article_text {
+    .article__text {
       line-height: 1.375em;
       a {
         text-decoration: underline;
@@ -216,43 +229,65 @@ main {
         display: block;
         border-bottom: @light-grey 1px solid;
         padding-bottom: 7px;
-        margin-top: 22px;
-        margin-bottom: 22px;
+        margin-top: 2em;
+        margin-bottom: 1.5rem;
+        font-size: 1.8em;
+      }
+
+      h2, h3, h4, h5, h6 {
+        margin-top: 2.375rem;
+        margin-bottom: 1.375em;
       }
 
       code {
-        margin: 2px;
-        padding: 4px;
-        color: @black;
-        font-size: 15px;
+        padding: 0.2em 0;
+        color: @dark-red;
         font-family: @mono;
         background: @light-grey;
+        border-radius: 3px;
       }
 
       pre {
         margin: 22px 2px 22px 2px;
         padding: 9.5px;
-        font-size: 15px;
         font-family: @mono;
-        line-height: 1.25em;
+        line-height: 1.45;
         overflow-x: auto;
         border-style: none;
         border-radius: 4px;
       }
 
       blockquote {
+        display: block;
         margin: 22px 2px 22px 2px;
-        padding-left: 40px;
-        color: @med-grey;
+        padding: 1em 2em 1em 4em;
+        color: #9E9E9E;
         font-style: italic;
+        position: relative;
+      }
+      blockquote:before {
+        content: '"';
+        font-size: 600%;
+        font-style: bold;
+        line-height: 1em;
+        left: 0;
+        top: 0;
+        position: absolute;
+        color: #9E9E9E;
+      }
+
+      .footnote {
+        font-size: 13.5px;
+        margin-top: 5em;
+        line-height: 1.1em;
       }
     }
 
-    div.gist {
+    .gist {
       line-height: .875em;
     }
 
-    div.article_meta {
+    .article__meta {
       font-size: 12px;
       color: @med-grey;
       margin-bottom: 2rem;
@@ -269,7 +304,7 @@ footer {
   width: 100%;
   margin: 0 auto;
 
-  .author_logo {
+  .author__logo {
     width: 72px;
     margin-left: auto;
     margin-right: auto;
@@ -282,7 +317,7 @@ footer {
     }
   }
 
-  section.user_meta {
+  section.author {
     max-width: 600px;
     margin: 1.5em auto;
 
@@ -297,7 +332,7 @@ footer {
       font-size: 30px;
     }
 
-    .author_name {
+    .author__name {
       font-style: italic;
       max-width: 420px;
       width: 70%;
@@ -308,7 +343,7 @@ footer {
       }
     }
 
-    .author_link {
+    .author__link {
       text-align: left;
       max-width: 420px;
       margin-left: auto;
@@ -321,7 +356,7 @@ footer {
     }
   }
 
-  div.ending_message {
+  .ending-message {
     border-top: @light-grey 1px solid;
     padding: 0 40px 0 40px;
     color: @med-grey;
