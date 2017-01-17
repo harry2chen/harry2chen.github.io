@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="https://harry2chen.github.io/theme/css/style.less">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="icon" type="image/vnd.microsoft.icon" href="https://harry2chen.github.io/">
+  <link rel="stylesheet" type="text/css" href="https://harry2chen.github.io/theme/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="https://harry2chen.github.io/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="https://harry2chen.github.io/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto+Mono">
+  <link rel="stylesheet" type="text/css" href="https://harry2chen.github.io/theme/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://harry2chen.github.io/theme/css/hatena-bookmark-icon.css">
+  <link rel="stylesheet" type="text/css" href="/static/custom.css">
+
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Harry Chen">
+  <meta name="description" content="Posts and writings by Harry Chen">
+
+  <link href="https://harry2chen.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Duang一下 Atom" />
+
+<meta name="keywords" content="pelican, Blog, Github">
+
+  <title>
+    Duang一下
+&ndash; The guide to set up static Site Blog with pelican  </title>
+
+</head>
+
+<body>
+  <main>
+    <header>
+      <div class="site-name">
+        <a href="https://harry2chen.github.io">Duang一下</a>
+      </div>
+      <p>
+        <a href="https://harry2chen.github.io/archives.html"><i class="fa fa-archive"></i> Archive</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article__title">
+    <h1><a href="https://harry2chen.github.io/posts/2017/ 1/17/guideofsetuppelican/">The guide to set up static Site Blog with pelican</a></h1>
+  </div>
+  <div class="article__meta">
+    <p class="article__meta__post-date">Posted on: 二 17 一月 2017</p>
+ Tags:
+      <a href="https://harry2chen.github.io/tag/pelican/">#pelican</a>,      <a href="https://harry2chen.github.io/tag/blog/">#Blog</a>,      <a href="https://harry2chen.github.io/tag/github/">#Github</a>    </p>
+  </div>
+  <div class="article__text">
+    <p><strong>Please following the instruction step by step:</strong></p>
+<hr />
+<h2>1. Install iTerm2</h2>
+<p>Download and install <a href="http://www.iterm2.com/#/section/home">iTerm2</a> and <strong>zsh</strong> and <a href="https://github.com/robbyrussell/oh-my-zsh">Oh my Zsh</a>. Reference to <a href="http://www.dreamxu.com/mac-terminal/">Mac 下配置终端环境 iTerm2 + Zsh + Oh My Zsh + tmux</a> to configure these.</p>
+<h2>2. Install python and git</h2>
+<p>Pelican is written in Python so you need to install Python first. Download the latest version of Python <a href="https://www.python.org/downloads/">here</a> first.  </p>
+<p>Before starting with Github, you need to install Git, the most widely used version control system. Download and install from <a href="https://git-scm.com">here</a>.</p>
+<h2>3. Sign up with Github</h2>
+<p>Sign up an account with <a href="https://www.github.com/">Github</a>.</p>
+<p>In your Github page, go to Account Settings (top right corner).<br />
+<img alt="p1" src="http://imglf1.nosdn.127.net/img/d3ZsTFNPUmtTU29URUtHVGc3Ulcva3FrNTZZK3BkcEw2YUZwVzlkVEZPNUFXNjg2Z25UMWVRPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" /></p>
+<p>from the left-hand menu, go to SSH Keys.   <br />
+<img alt="p2" src="http://imglf1.nosdn.127.net/img/d3ZsTFNPUmtTU29URUtHVGc3UlcvZ1Nsbk9TK0dFVFFTT0ZWeXIzVXZhUTdvNmFqY21TVENRPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" /></p>
+<p>You need to link up your SSH key from the local machine to your github page so that you can push contents from local to github. Follow <a href="https://help.github.com/articles/connecting-to-github-with-ssh/">this guide</a> to set it up:  </p>
+<p>Open iTerm, you should be at the root of your home directory. Type the following commands:</p>
+<div class="highlight"><pre><span></span>cd ~/.ssh
+# enter into a hidden directory that stores ssh information
+ls -al
+# list the files in your .ssh directory
+ssh-keygen -t rsa -C &quot;your_email@example.com&quot;
+# create a new ssh key, using your email as a label
+eval `ssh-agent -s`
+# start the ssh-agent in the background
+ssh-add ~/.ssh/id_rsa
+# add the ssh info into a file id_rsa in directory .ssh
+pbcopy &lt; ~/.ssh/id_rsa.pub
+# copy the contents of the id_rsa.pub file to your computer&#39;s clipboard
+</pre></div>
+
+
+<p>Following the rest of the steps as laid out in <a href="https://help.github.com/articles/connecting-to-github-with-ssh/">github's help</a> to complete the "hand-shake" setup.</p>
+<h2>4. Create a Github Page project site</h2>
+<p>Next question is: where this folder of your website should be? This folder can be anywhere in your home directory on your local machine. Open your iTerm, then:</p>
+<div class="highlight"><pre><span></span>cd ~
+# enter into my home directory
+mkdir myblog
+# create an empty directory called &quot;myblog&quot; 
+cd myblog
+# enter into this blog folder. All subsequent commands will be carried out in this path
+</pre></div>
+
+
+<p>Go to <a href="https://pages.github.com">Github Page</a> to create a project site. Please choosing the USER site and follow the instruction.<br />
+<img alt="p5" src="http://imglf.nosdn.127.net/img/d3ZsTFNPUmtTU29URUtHVGc3UlcvbVFGWHlMRXFXamNnZGZDREErQk9WaEpybkw0L0ZNSlpRPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" /></p>
+<h2>5. Install Pelican &amp; dependencies</h2>
+<p>Download pip from <a href="http://pip.readthedocs.io/en/latest/installing/#install-pip">here </a> into your blog home directory on local machine.</p>
+<div class="highlight"><pre><span></span>cd ~/myblog
+# enter into your local blog home directory
+sudo python get-pip.py
+# run the installation with administrator access. Enter your admin password when prompted
+</pre></div>
+
+
+<p>Install <a href="http://docs.getpelican.com/en/3.6.3/install.html">Pelican</a>Pelican using pip:</p>
+<div class="highlight"><pre><span></span>cd ~
+# do this at your home directory
+sudo pip install pelican
+# install pelican with admin access
+</pre></div>
+
+
+<p>Install Markdown using pip:</p>
+<div class="highlight"><pre><span></span>sudo pip install Markdown
+# so that your system recognizes .md and .markdown files as Markdown files
+</pre></div>
+
+
+<p>Install <a href="https://github.com/davisp/ghp-import">ghp-import</a> using pip:</p>
+<div class="highlight"><pre><span></span>sudo pip install ghp-import
+# this add-on is to facilitate the git push for your Github Page Project Site as it&#39;s a gh-pages branch, not the master branch as default
+</pre></div>
+
+
+<h2>6. Kickstart your site with Pelican</h2>
+<p>Finally, we can create a skeleton project now on the lacal machine with Pelican</p>
+<div class="highlight"><pre><span></span>cd ~/myblog
+# make sure you are in the right path for your blog
+pelican-quickstart
+# launch the installer for your project/blog site
+</pre></div>
+
+
+<p>Yor'll next be prompted with 10+ lines of question</p>
+<div class="highlight"><pre><span></span>&gt; Where do you want to create your new web site? [.]
+# just press Enter to use the default current path &quot;~/myblog&quot;
+&gt; What will be the title of this web site?
+# enter &quot;My Awesome Site&quot;
+&gt; Who will be the author of this web site?
+# enter &quot;Chuck Norris&quot;
+&gt; What will be the default language of this web site? [en]
+# press Enter to accept English
+&gt; Do you want to specify a URL prefix? e.g., http://example.com   (Y/n)
+# enter Y
+&gt; What is your URL prefix? (see above example; no trailing slash)
+# enter http://yourdomain.com
+&gt; Do you want to enable article pagination? (Y/n)
+# enter Y
+&gt; How many articles per page do you want? [10]
+# enter 10
+&gt; Do you want to generate a Fabfile/Makefile to automate generation and publishing? (Y/n)
+# enter Y
+&gt; Do you want an auto-reload &amp; simpleHTTP script to assist with theme and site development? (Y/n)
+# enter Y
+&gt; Do you want to upload your website using FTP? (y/N)
+# enter N
+&gt; Do you want to upload your website using SSH? (y/N)
+# enter N
+&gt; Do you want to upload your website using Dropbox? (y/N)
+# enter N
+&gt; Do you want to upload your website using S3? (y/N)
+# enter N
+&gt; Do you want to upload your website using Rackspace Cloud Files? (y/N)
+# enter N
+</pre></div>
+
+
+<p>Here's the screenshot:<br />
+<img alt="p3" src="http://imglf1.nosdn.127.net/img/d3ZsTFNPUmtTU3JiZmVmR1UwN29pbXhwaEFXNHlGZE9pYWg4S3hpY0pmRmdCeTVNbTBxVnZRPT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" /></p>
+<p>For a more detailed explanation, read this up: <a href="http://docs.getpelican.com/en/3.6.3/install.html">kickstart your pelican site</a>.</p>
+<h2>7. Install an editor for hacking Python/CSS</h2>
+<p>The <a href="http://www.sublimetext.com">Sublime Text 2</a> is a good choice. If you're vim's fans, you can turn on <a href="http://feliving.github.io/Sublime-Text-3-Documentation/vintage.html">Vintage mode</a></p>
+<h2>8. Organize contents directory</h2>
+<p>Following is my content directory screenshot:<br />
+<img alt="p4" src="http://imglf1.nosdn.127.net/img/d3ZsTFNPUmtTU3JiZmVmR1UwN29pcDhld3dQcGNxbDRMSE9IMlIzZDNGUWtkM2lrdU9PcXpBPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" /><br />
+"posts" is the place to store my posts. You can create sub-directory to classify your contents in "posts" directory.<br />
+"pages" is the place to store some static pages, like about.html.<br />
+"static" is the place to store some file not modify when copy to "output" directory.<br />
+"extra" is the place to store custom css file.</p>
+<h2>9. Adjust Pelican setting</h2>
+<p>There are 2 configuer file (pelicanconf.py &amp; publishconf.py). As clear as literally:  </p>
+<ul>
+<li>pelicanconf.py focus on develop site on local machine;</li>
+<li>publishconf.py focus on publish your site to remote service;</li>
+</ul>
+<p>I spent a lot of time to tinkering with these two file. Please reference to <a href="http://docs.getpelican.com/en/3.4.0/settings.html#example-settings">default example</a> and then customize that into your own version.</p>
+<h2>10. Pick a Pelican theme &amp; plugin &amp; customize CSS</h2>
+<p>Download all the main Pelican themes from this <a href="https://github.com/getpelican/pelican-themes">github repo</a>, Pelican plugin from <a href="https://github.com/getpelican/pelican-plugins">pelican Plugin</a>,Download the zip file and unzip that into your ~/pelican directory.</p>
+<p>You can change the theme to <a href="https://github.com/laughk/pelican-hss">pelican-hss</a> pretty easily in pelicanconf.py.</p>
+<div class="highlight"><pre><span></span>THEME = &quot;~/pelican/pelican-themes/pelican-hss&quot;
+# save the file and this new theme will take effect immediately
+</pre></div>
+
+
+<p>This file(~/pelican/pelican-themes/pelican-hss/static/css/style.min.css) will be your friend in the next two weeks as you ceaselessly try out various styling combinations. Most Pelican themes follow a similar file structure and there will be this one bad-bass monster CSS file in one of the folders.<br />
+Editing the custom.css file(~/myblog/contents/extra/custom.css) will take effect to achieve your purpose what you want style CSS file, it's appear base on the style.min.css. </p>
+<h2>11. Install Markdown &amp; download MOU</h2>
+<p>All markdown files will have an extension .markdown or .md. You can use any editor to edit them but <a href="http://25.io/mou/">MOU</a> is the most popular choice on OSX.</p>
+<h2>12. Create contents &amp; publish</h2>
+<p>At last, let there be an article. We've got all the ingredients ready.</p>
+<p>Create a .md file in MOU. This markdown file should contain the following header information so that Pelican knows how to render the page:</p>
+<div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="n">sensational</span> <span class="n">title</span>
+<span class="n">Date</span><span class="o">:</span> <span class="mi">2014</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">03</span> <span class="mi">08</span><span class="o">:</span><span class="mi">00</span>
+<span class="n">Tags</span><span class="o">:</span> <span class="n">fun</span><span class="o">,</span> <span class="err">中文</span>
+<span class="n">Category</span><span class="o">:</span> <span class="n">Tech</span>
+<span class="n">Slug</span><span class="o">:</span> <span class="n">my</span><span class="o">-</span><span class="kd">super</span><span class="o">-</span><span class="n">post</span>
+<span class="n">Summary</span><span class="o">:</span> <span class="n">Short</span> <span class="n">executive</span> <span class="n">summary</span> <span class="k">for</span> <span class="n">your</span> <span class="n">article</span>
+
+<span class="n">This</span> <span class="k">is</span> <span class="n">the</span> <span class="n">content</span> <span class="n">of</span> <span class="n">my</span> <span class="kd">super</span> <span class="n">blog</span> <span class="n">post</span><span class="o">.</span>
+</pre></div>
+
+
+<p>Save this file into ~/myblog/content/ folder. I store these header info in an Evernote post that I can copy and paste from pretty easily.</p>
+<p>Run the test server on your local machine to see if things come out alright.</p>
+<div class="highlight"><pre><span></span>cd ~/myblog
+# the next two commands need to be excited at the root directory of the site
+make html
+# sort of &quot;compiling&quot; your website and render markdown files into HTML ones
+make devserver
+# use Python to launch a server at your local machine&#39;s port 8000
+./develop_server.sh stop
+# stop the Python server, kill this process
+</pre></div>
+
+
+<p>Open your browser, go to http://localhost:8000. Hopefully you'll see a cool-looking website as you desire. If not, go back to pelicanconf.py and the CSS file to see what's gone wrong. These two are the single most important files of this entire process.  </p>
+<p>When you're happy with the test page, let's go live.  </p>
+<div class="highlight"><pre><span></span>cd ~/myblog
+make publish
+# use this command to generate static site source for push to remote serve
+cd ./output
+# go to the &quot;output&quot; directory which store the html source just generated by Pelican
+git add -A
+git commit -m &quot;the last change&quot;
+git push -u origin master
+</pre></div>
+
+
+<p>Now you can enter yourID.github.io to show your site on the browser.</p>
+<hr />
+<h4>General comments:</h4>
+<ul>
+<li>Try not to store too many images locally/on Github Page repo. I use <a href="http://chenhe123che.lofter.com">lofter</a> as central depository for all your image files and link your lofter image in markdown files.</li>
+<li>Back up your pelicanconf.py and CSS file constantly.</li>
+</ul>
+  </div>
+<section class="social-tools">
+
+    <div class="social-tools__title">
+      <p>Share this post</p>
+    </div>
+
+    <div class="social-tools__buttons">
+      <a class="tweet-blogpost-button"
+         href="https://twitter.com/share?text=Duang一下 - The guide to set up static Site Blog with pelican"
+         onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470'); return false;" >
+        <i class="fa fa-twitter"></i>
+      </a>
+      <a class="facebook-share-button"
+         href="https://www.facebook.com/sharer/sharer.php?u=https://harry2chen.github.io/posts/2017/ 1/17/guideofsetuppelican/"
+         onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" >
+        <i class="fa fa-facebook"></i>
+      </a>
+    </div>
+
+
+</section>  <div id="article__comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_identifier = "posts/2017/ 1/17/guideofsetuppelican/";
+        (function() {
+             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+             dsq.src = '//harry2chen.disqus.com/embed.js';
+             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+         })();
+    </script>
+  </div>
+
+</article>
+
+
+  </main>
+    <footer>
+      <div class="author__logo">
+          <img src="/static/images/mylogo.png" alt="logo">
+      </div>
+      <section class="author">
+        <div class="author__name">
+          <a href="https://harry2chen.github.io/pages/about.html">Harry Chen</a>
+          <p>I'm learning cs 108.</p>
+        </div>
+        <div class="author__link">
+          <ul>
+            <li>
+              <a href="https://twitter.com/harry2chen1900" target="_blank" title="twitter">
+                <i class="fa fa-twitter-square"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.github.com/harry2chen" target="_blank" title="github">
+                <i class="fa fa-github-square"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/harry.chen.1656854 " target="_blank" title="facebook">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://harry2chen.github.io/feeds/all.atom.xml" target="_blank" title="Feed">
+                <i class="fa fa-rss"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <div class="ending-message">
+        <p>&copy; Harry Chen. Powered by <a href="http://getpelican.com" target="_blank">Pelican</a>, Theme is using <a href="https://github.com/laughk/pelican-hss" target="_blank">HSS</a>. </p>
+      </div>
+    </footer>
+</body>
+</html>
